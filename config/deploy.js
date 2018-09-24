@@ -4,11 +4,11 @@ var ghpages = require('gh-pages');
 var dir = path.resolve(path.join(__dirname, '../', 'dist'));
 ghpages.publish(dir, {
   user: {
-    name: 'Swimlane',
-    email: 'developer@swimlane.com'
+    name: 'mmercan',
+    email: 'mmercan@outlook.com'
   },
   message: '(deploy): CI',
-  logger: function(message) {
+  logger: function (message) {
     console.log('gh-pages: ', message);
   }
 });

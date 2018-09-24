@@ -3,32 +3,38 @@ const webpackMerge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonConfig = require('./webpack.common');
-const { ENV, dir, APP_VERSION } = require('./helpers');
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const {
+  ENV,
+  dir,
+  APP_VERSION
+} = require('./helpers');
+const {
+  CheckerPlugin
+} = require('awesome-typescript-loader');
 // const ngtools = require('@ngtools/webpack');
 
 const banner =
-`/**
- * angular2-data-table v${APP_VERSION} (https://github.com/swimlane/angular2-data-table)
+  `/**
+ * angular2-data-table v${APP_VERSION} (https://github.com/mmercan/angular2-data-table)
  * Copyright 2016
  * Licensed under MIT
  */`;
 
-module.exports = function(env) {
-  return webpackMerge(commonConfig({ env: ENV }), {
+module.exports = function (env) {
+  return webpackMerge(commonConfig({
+    env: ENV
+  }), {
     devtool: 'source-map',
     module: {
       exprContextCritical: false,
-      rules: [
-        {
-          test: /\.ts$/,
-          loaders: [
-            'awesome-typescript-loader',
-            'angular2-template-loader'
-          ],
-          exclude: [/\.(spec|e2e|d)\.ts$/]
-        }
-      ]
+      rules: [{
+        test: /\.ts$/,
+        loaders: [
+          'awesome-typescript-loader',
+          'angular2-template-loader'
+        ],
+        exclude: [/\.(spec|e2e|d)\.ts$/]
+      }]
     },
     entry: {
       'index': './src/index.ts'
